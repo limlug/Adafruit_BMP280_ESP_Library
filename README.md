@@ -1,6 +1,10 @@
-#Adafruit BMP280 Driver (Barometric Pressure Sensor) #
+#Adafruit BMP280 Driver (Barometric Pressure Sensor) Modified for ESP8266#
 
 This driver is for the Adafruit BMP280 Breakout (http://www.adafruit.com/products/2651)
+
+## About the modification ##
+For use with the ESP8266 board you need the possibility to select custom Pins for the i2c communication. 
+You need to call the Adafruit_BMP280(int8_t sdapin, int8_t sclpin) function for initialisation. 
 
 ## About the BMP280 ##
 
