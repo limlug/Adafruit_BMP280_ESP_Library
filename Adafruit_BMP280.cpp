@@ -25,15 +25,19 @@
 
 
 Adafruit_BMP280::Adafruit_BMP280()
-  : _cs(-1), _mosi(-1), _miso(-1), _sck(-1)
+  : _cs(-1), _mosi(-1), _miso(-1), _sck(-1), _sda(-1), _scl(-1)
+{ }
+
+Adafruit_BMP280::Adafruit_BMP280(int8_t sdapin, int8_t sclpin)
+  : _cs(-1), _mosi(-1), _miso(-1), _sck(-1), _sda(sdapin), _scl(sclpin)
 { }
 
 Adafruit_BMP280::Adafruit_BMP280(int8_t cspin)
-  : _cs(cspin), _mosi(-1), _miso(-1), _sck(-1)
+  : _cs(cspin), _mosi(-1), _miso(-1), _sck(-1), _sda(-1), _scl(-1)
 { }
 
 Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin)
-  : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin)
+  : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin), _sda(-1), _scl(-1)
 { }
 
 
@@ -42,7 +46,7 @@ bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid) {
 
   if (_cs == -1) {
     // i2c
-    Wire.begin();
+    Wire.begin(_sda, _scl);
   } else {
     digitalWrite(_cs, HIGH);
     pinMode(_cs, OUTPUT);
