@@ -19,7 +19,7 @@
 #include "Arduino.h"
 #include <Wire.h>
 #include <SPI.h>
-#include "Adafruit_BMP280.h"
+#include "Adafruit_BMP280_ESP.h"
 
 
 /***************************************************************************
